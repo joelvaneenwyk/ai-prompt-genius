@@ -1,30 +1,24 @@
 # ⧈ Plan — Restore Local Chat History & Export to *ai-prompt-genius* ⧉
 
-*Version V0.1 · 2025-05-31*
+> Version V0.1 · 2025-05-31
 
 Bring back the missing **auto-save every ChatGPT conversation + exporter** capability (last seen in early 2023).
-
----
 
 ## Prerequisites
 
 * **Node 18+** – [download](https://nodejs.org/)
-* **npm / pnpm** – `npm i -g pnpm` (optional)
+* **npm**
 * **Edge / Chrome (Chromium)** – [Edge](https://www.microsoft.com/edge) for quickest testing
-* **Python 3.9+** – only if you already use `main.py` launcher
-
----
+* **Python 3.10+** – only if you already use `main.py` launcher
 
 ## 1 Install Project Deps
 
 ```bash
-pnpm install
-pnpm add dexie lodash-es      # IndexedDB wrapper + debounce util
+npm install
+npm install dexie lodash-es      # IndexedDB wrapper + debounce util
 ```
 
 *Docs:* [Dexie](https://dexie.org/docs)  |  [lodash-es on npm](https://www.npmjs.com/package/lodash-es)
-
----
 
 ## 2 IndexedDB Schema
 
@@ -64,8 +58,6 @@ export const db = new HistoryDB();
 
 > **Codex hint:** “Generate Vitest tests for `HistoryDB` insert & lookup.”
 
----
-
 ## 3 Recorder Content Script
 
 **src/contentScripts/historyRecorder.ts** (modernised from 2023 code)
@@ -97,8 +89,6 @@ new MutationObserver(m =>
 
 *Original inspiration:* [`chatRecorder.ts`](https://raw.githubusercontent.com/davgit/ChatGPT-Prompt-Genius/master/src/contentScript/chatRecorder.ts)
 
----
-
 ## 4 Patch `manifest.json`
 
 ```jsonc
@@ -112,17 +102,14 @@ new MutationObserver(m =>
 "permissions": ["storage"]
 ```
 
----
-
 ## 5 History UI & Export
 
 1. Copy view:
    *`src/pages/History/ThreadView.tsx`* ← [`ThreadView.tsx` raw](https://raw.githubusercontent.com/davgit/ChatGPT-Prompt-Genius/master/src/pages/thread/ThreadView.tsx)
 2. Add a **History** route in `App.tsx` sidebar.
-3. Install **JSZip** (`pnpm add jszip`) for an **Export All (.zip)** button.
-   *Docs:* [JSZip site](https://stuk.github.io/jszip/)
 
----
+3. Install **JSZip** (`npm install jszip`) for an **Export All (.zip)** button.
+   *Docs:* [JSZip site](https://stuk.github.io/jszip/)
 
 ## 6 Build & Lint
 
@@ -130,8 +117,6 @@ new MutationObserver(m =>
 npm run lint
 npm run build        # emits historyRecorder.js into dist/
 ```
-
----
 
 ## 7 Local Verification
 
@@ -141,18 +126,14 @@ npm run build        # emits historyRecorder.js into dist/
 4. In the browser, visit `chrome://indexeddb-internals` and check **chatgpt** DB rows.
 5. Go to **History** page → list threads → click **Export** → verify Markdown / PDF / ZIP.
 
----
-
 ## 8 Optional CI
 
 Add to `.github/workflows/ci.yml`
 
 ```yaml
-- run: pnpm vitest run        # unit tests
-- run: pnpm run build         # ensure recorder compiles
+- run: npm run vitest         # unit tests
+- run: npm run build          # ensure recorder compiles
 ```
-
----
 
 ## 9 Docs Update
 
@@ -167,14 +148,10 @@ Add to `.github/workflows/ci.yml`
 
 *(Also add bullet in CHANGELOG.md under “Unreleased”.)*
 
----
-
 ### Quick Resources
 
 * Legacy fork with full history logic – <https://github.com/davgit/ChatGPT-Prompt-Genius>
 * Chrome IndexedDB viewer – type **chrome://indexeddb-internals** in address bar
 * Dexie React guide – <https://dexie.org/docs/Tutorial/React>
-
----
 
 **Done.** Build + launch and your extension once again records every ChatGPT conversation for easy archival.
