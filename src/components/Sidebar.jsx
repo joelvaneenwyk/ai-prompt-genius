@@ -136,6 +136,10 @@ export default function Sidebar({
                         )}
 
                         <li>
+                            <a href="?history=true">History</a>
+                        </li>
+
+                        <li>
                             <a onClick={openSettings}>
                                 <Cog /> {t(k.SETTINGS)}
                             </a>

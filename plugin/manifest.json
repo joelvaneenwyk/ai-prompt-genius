@@ -19,6 +19,11 @@
             "matches": ["https://chatgpt.com/*"],
             "js": ["scripts/legacy_hotkey.js"],
             "run_at": "document_idle"
+        },
+        {
+            "matches": ["https://chat.openai.com/*"],
+            "js": ["contentScripts/historyRecorder.js"],
+            "run_at": "document_idle"
         }
     ],
     "commands": {
