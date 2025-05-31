@@ -1,0 +1,13 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  default:
+    cmds:
+      - npm install
+      - npm run build
+      - uv run isort .
+      - uv run ruff check --fix
+      - uv run ruff format
+      - uv run main.py
