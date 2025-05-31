@@ -30,6 +30,8 @@ import sys
 import zipfile
 from pathlib import Path
 
+import pyperclip
+
 ROOT = Path(__file__).resolve().parent
 DIST = ROOT / "dist"
 ZIP = ROOT / "ai_prompt_genius.zip"
@@ -89,12 +91,16 @@ def find_edge() -> Path:
 
 
 def launch_edge() -> None:
+    # Copy dist path to clipboard for easy loading in Edge
+    dist_path = str(DIST.resolve())
+    pyperclip.copy(dist_path)
+    print(f"✓ Copied dist folder path to clipboard: {dist_path}")
+
+    # Launch Edge to the extensions page
     edge = find_edge()
     args = [
         str(edge),
-        f"--disable-extensions-except={DIST}",
-        f"--load-extension={DIST}",
-        "https://chat.openai.com",
+        "edge://extensions/",
     ]
     print(f"🚀 launching Edge → {' '.join(args)}")
     sp.Popen(args)  # detached; script returns immediately
