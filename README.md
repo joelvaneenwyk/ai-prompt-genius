@@ -11,6 +11,11 @@ AI Prompt Genius is a Chrome extension that allows you to curate a custom librar
 - Chrome - Install from the <a href="https://chrome.google.com/webstore/detail/chatgpt-history/jjdnakkfjnnbbckhifcfchagnpofjffo/">Chrome Web Store</a>
 - Firefox is not supported due to Google Auth for syncing
 
+### Local Chat History (Revived)
+• Auto-saves every ChatGPT message to IndexedDB
+• History view with per-thread export (Markdown, PDF)
+• Bulk “Export All (.zip)” powered by JSZip
+
 ## License
 Shield: [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa] 
 

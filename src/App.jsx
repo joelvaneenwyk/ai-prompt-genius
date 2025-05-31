@@ -12,6 +12,7 @@ import OnboardingModal from "./components/OnboardingModal.jsx"
 import i18next from "i18next"
 import HotkeyUpdateModal from "./components/HotkeyUpdateModal.jsx"
 import ReactGA from "react-ga4"
+import ThreadView from "./pages/History/ThreadView.tsx"
 
 function App() {
     ReactGA.initialize("G-YV9PMGYJDJ")
@@ -39,6 +40,7 @@ function App() {
     // get the "transfer" and onboarding URL parameters
     const transferring = new URLSearchParams(window.location.search).get("transfer") ?? false
     const onboarding = new URLSearchParams(window.location.search).get("onboarding") ?? false
+    const historyMode = new URLSearchParams(window.location.search).get("history") !== null
 
     // Hotkey Update Modal 12/13
     const lang = localStorage.getItem("lng") ?? "en"
@@ -142,6 +144,14 @@ function App() {
             setToast(false)
             setToastMessage("")
         }, 3000)
+    }
+
+    if (historyMode) {
+        return (
+            <div data-theme={theme} className="p-4">
+                <ThreadView />
+            </div>
+        )
     }
 
     return (
