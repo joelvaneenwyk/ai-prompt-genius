@@ -27,3 +27,5 @@ docs/.obsidian
 *.sln
 *.sw?
 .vite
+
+*.zip
