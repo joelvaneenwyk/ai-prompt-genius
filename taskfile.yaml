@@ -6,6 +6,7 @@ tasks:
   default:
     cmds:
       - npm install
+      - npm run lint
       - npm run build
       - uv run isort .
       - uv run ruff check --fix
