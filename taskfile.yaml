@@ -4,11 +4,20 @@ version: '3'
 
 tasks:
   default:
+    deps: [npm]
     cmds:
-      - npm install
       - npm run lint
       - npm run build
       - uv run isort .
       - uv run ruff check --fix
       - uv run ruff format
       - uv run main.py
+
+  npm:
+    sources:
+      - package.json
+      - package-lock.json
+    generates:
+      - node_modules/.bin/eslint
+    cmds:
+      - npm install

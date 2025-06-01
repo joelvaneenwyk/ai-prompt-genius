@@ -23,6 +23,7 @@ Usage
 
 from __future__ import annotations
 
+import os
 import platform
 import shutil
 import subprocess as sp
@@ -91,6 +92,10 @@ def find_edge() -> Path:
 
 
 def launch_edge() -> None:
+    # Only launch Edge if not running in GitHub Actions
+    if "GITHUB_ACTIONS" in os.environ:
+        print("⚠️ Detected GitHub Actions environment; skipping Edge launch.")
+        return
     # Copy dist path to clipboard for easy loading in Edge
     dist_path = str(DIST.resolve())
     pyperclip.copy(dist_path)

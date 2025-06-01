@@ -29,3 +29,5 @@ docs/.obsidian
 .vite
 
 *.zip
+
+.task/
