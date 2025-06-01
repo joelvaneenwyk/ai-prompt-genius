@@ -6,21 +6,20 @@ export default function Ad() {
 
     return (
         <>
-             {!isPro && (
-                 <p className={"text-sm"}>
-                     <a
-                         className={"link link-primary"}
-                         href={"https://voicetype.com/"}
-                         target={"_blank"}
-                     >
-                         Write 7x Faster with AI Speech-to-Text
-                     </a>
-                     
-                 </p>
-             )}
-         </>
-     )
- }
+            {!isPro && (
+                <p className={"text-sm"}>
+                    <a
+                        className={"link link-primary"}
+                        href={"https://voicetype.com/"}
+                        target={"_blank"}
+                    >
+                        Write 7x Faster with AI Speech-to-Text
+                    </a>
+                </p>
+            )}
+        </>
+    )
+}
 /* 
 {!isPro && (
                 <p className={"text-sm"}>
@@ -36,7 +35,6 @@ export default function Ad() {
                 </p>
             )}
  */
-
 
 //             {!isPro && (
 //                 <p className={"text-sm"}>

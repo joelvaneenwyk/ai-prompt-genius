@@ -1,7 +1,5 @@
 // update this with
 const promos = [
-
-
     {
         url: "https://link.aipromptgenius.app/voicetype",
         promoStart: "5/12/2025", // month/day/year
@@ -28,7 +26,7 @@ const promos = [
         promoEnd: "1/24/2025", // WARNING: make sure start & end dates don't overlap!!
         id: "MaxAI.me campaign 1/16/2025 - 1/24/2025", // give a unique name for all promos - even "dead" ones
     },
-    
+
     {
         url: "https://link.aipromptgenius.app/max-ai-5-2",
         promoStart: "5/3/2024", // month/day/year
